@@ -45,6 +45,12 @@ function Container(props) {
             padding: 1em 1em 2em 1em;
             background: #2b283d;
           }
+          @media (min-width: 800px) {
+            section {
+              font-size: 2.1em;
+              max-width: 800px;
+            }
+          }
           /* 1-1 */
         `}
       </style>
