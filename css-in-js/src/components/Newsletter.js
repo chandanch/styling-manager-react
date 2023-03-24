@@ -47,11 +47,10 @@ function Container(props) {
           }
           @media (min-width: 800px) {
             section {
-              font-size: 2.1em;
-              max-width: 800px;
+              font-size: 2.25em;
+              max-width: 700px;
             }
           }
-          /* 1-1 */
         `}
       </style>
     </section>
@@ -72,7 +71,7 @@ function Header(props) {
             text-shadow: 0 3px 2px #000;
           }
           header :global(h2) {
-            margin: 2px;
+            margin: 0 0 0.5em 0;
           }
         `}
       </style>
@@ -98,6 +97,7 @@ function Email(props) {
           }
           input:focus {
             outline: 2px solid #fff;
+            outline-offset: 0.15em;
           }
         `}
       </style>
@@ -126,25 +126,31 @@ function Submit(props) {
             cursor: pointer;
             text-transform: uppercase;
             transition: all 300ms;
-            /* 1-4 */
+            height: ${props.active ? "auto" : "0"};
+            width: ${props.active ? "auto" : "0"};
+            font-size: ${props.active ? "1em" : "0"};
             translate: ${props.active ? "-50% 50%" : "-50%"};
             rotate: ${props.active ? "-5deg" : "45deg"};
+            padding: ${props.active ? "0.25em 1em" : "0"};
             border-bottom: ${props.active
               ? `3px solid ${color.spectrum5}`
               : "0"};
             outline: none;
           }
-          /* 1-5 */
-          button:focus {
-            outline: 2px solid #fff;
-            outline-offset: 4px;
-          }
-          button:focus,
-          button:hover {
-            border-bottom-color: ${color.spectrum1};
-            rotate: 0deg;
-            scale: 1.2;
-          }
+          ${props.active
+            ? `
+              button:focus {
+                outline: 2px solid #fff;
+                outline-offset: 4px;
+              }
+              button:focus,
+              button:hover {
+                border-bottom-color: ${color.spectrum1};
+                rotate: 0deg;
+                scale: 1.2;
+              }
+              `
+            : ""}
         `}
       </style>
     </button>
@@ -179,8 +185,8 @@ function Bar(props) {
       <style jsx>
         {`
           div {
-            /* 1-6 */
-            /* 1-7 */
+            height: ${props.active ? "100%" : "0.5em"};
+            animation: jitter 350ms ease-out infinite alternate;
             width: 20%;
             transform-origin: bottom;
             transition: all 1s;
@@ -204,6 +210,14 @@ function Bar(props) {
           div:nth-child(5n) {
             background: ${color.spectrum5};
             animation-delay: 200ms;
+          }
+          @keyframes jitter {
+            0% {
+              transform: scaleY(1);
+            }
+            100% {
+              transform: scaleY(0.9);
+            }
           }
         `}
       </style>
