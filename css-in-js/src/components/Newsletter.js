@@ -71,7 +71,9 @@ function Header(props) {
             font-size: 0.85em;
             text-shadow: 0 3px 2px #000;
           }
-          /* 1-2 */
+          header :global(h2) {
+            margin: 2px;
+          }
         `}
       </style>
     </header>
@@ -94,7 +96,9 @@ function Email(props) {
             margin: 0.15em;
             border: 1px solid black;
           }
-          /* 1-3 */
+          input:focus {
+            outline: 2px solid #fff;
+          }
         `}
       </style>
     </>
